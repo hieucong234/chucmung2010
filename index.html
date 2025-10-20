@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chúc mừng 20/10</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <audio id="myMusic" loop preload="auto">
+      <source src="music4.mp3" type="audio/mpeg" />
+      Trình duyệt của bạn không hỗ trợ thẻ audio.
+    </audio>
+
+    <!-- ======== TRANG 1 + TRANG 2 ======== -->
+    <div id="pageTwoWrapper" class="content-wrapper">
+      <h1 class="main-title">🌸 Chúc mừng ngày 20/10 Mai Trang 🌸</h1>
+
+      <button id="revealButton" class="btn-main">Ấn vào đây đi Trang</button>
+
+      <div id="personalMessage" class="personal-message hidden">
+        Hello Trang, cũng lâu rồi, anh là Hiếu người tình cờ gặp em trên web nói chuyện ấy...<br>
+        Nhân ngày đặc biệt 20/10 này, anh chúc Trang ngày càng xinh đẹp, vui vẻ hạnh phúc và luôn rạng rỡ như chính năng lượng Trang mọi khi.<br>
+        Mong Trang mãi là cô gái khiến người khác phải nhớ mãi dù chỉ qua ánh nhìn.<br>
+        Chúc em có một ngày 20/10 thật đặc biệt như chính Trang vậy ❀
+      </div>
+
+      <div id="mainContentRow" class="main-content hidden">
+    
+        <p class="general-message">
+          Tuổi 18 — một cột mốc thật đẹp, nhưng anh chúc Trang có thật nhiều niềm vui, may mắn và những điều tốt đẹp nhất. <br>
+Mong Trang luôn giữ tinh thần tích cực, gặp nhiều thuận lợi và thành công trong tuổi mới. <br>
+Đặc biệt, anh chúc Trang thi thật tốt và đỗ nguyện vọng 1 vào ngôi trường mà em mơ ước — HNUE nhaaa! ✨ <br>
+        </p>
+        <button id="toThirdPage" class="btn-main">Ấn lần nữa nha 🌷</button>
+      </div>
+    </div>
+
+    <!-- ======== TRANG 3 ======== -->
+    <div id="thirdPageWrapper" class="content-wrapper hidden">
+      <h1 class="main-title">Một chút nhắn gửi đến Trang 🌷</h1>
+      <p class="general-message">
+        Cảm ơn Trang vì đã xem đến trang này 🌷<br>
+        Anh chỉ muốn nói rằng em thật sự xứng đáng với mọi điều tốt đẹp nhất.<br>
+        Anh cũng có chuẩn bị một chút quà nhỏ và mang đến quán Ufftea Coffee hôm nay.<br>
+        <br>
+        Anh cũng không biết nói gì nữa, cũng không hiểu đang làm gì nữa...<br>
+        Có lẽ anh sẽ ở quán Coffee đến tối hy vọng Trang có thể đến đó nhận một chút tấm lòng của anh.<br>
+        Đến tối anh sẽ gửi lại quán nha... <br>
+
+        Cuối cùng, anh xin lỗi Trang nhiều.
+      </p>
+
+    </div>
+
+    <!-- Hiệu ứng hoa anh đào -->
+    <div class="falling-petals">
+      <div class="petal">🌸</div><div class="petal">🌸</div><div class="petal">🌸</div>
+      <div class="petal">🌸</div><div class="petal">🌸</div><div class="petal">🌸</div>
+      <div class="petal">🌸</div><div class="petal">🌸</div><div class="petal">🌸</div><div class="petal">🌸</div>
+    </div>
+  </div>
+
+  <footer>
+    <p>🌸 Gửi lời chúc từ 
+      <a href="https://www.facebook.com/hieu.day.hihi" target="_blank">Phạm Công Hiếu</a> 🌸
+    </p>
+  </footer>
+
+  <script>
+    // --- Hàm tách nội dung thành từng dòng có hiệu ứng ---
+    function wrapTextLines(selector) {
+      document.querySelectorAll(selector).forEach(el => {
+        const raw = el.innerHTML;
+        const parts = raw.split(/<br\s*\/?>/i).map(s => s.trim()).filter(Boolean);
+        el.innerHTML = '';
+        parts.forEach(text => {
+          const div = document.createElement('div');
+          div.className = 'fade-line';
+          div.innerHTML = text;
+          el.appendChild(div);
+        });
+      });
+    }
+
+    function revealLines(selector, delay = 200) {
+      const lines = document.querySelectorAll(selector + ' .fade-line');
+      lines.forEach((line, i) => {
+        setTimeout(() => line.classList.add('show'), i * delay);
+      });
+    }
+
+    function hideLines(selector) {
+      document.querySelectorAll(selector + ' .fade-line').forEach(l => l.classList.remove('show'));
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      wrapTextLines('#personalMessage');
+      wrapTextLines('#mainContentRow .general-message');
+      wrapTextLines('#thirdPageWrapper .general-message');
+    });
+
+    const revealButton = document.getElementById('revealButton');
+    const music = document.getElementById('myMusic');
+    const message = document.getElementById('personalMessage');
+    const mainContent = document.getElementById('mainContentRow');
+    const toThirdPage = document.getElementById('toThirdPage');
+    const thirdPage = document.getElementById('thirdPageWrapper');
+    const pageTwo = document.getElementById('pageTwoWrapper');
+    const backToStart = document.getElementById('backToStart');
+
+    // Trang 1 → Trang 2
+    revealButton.addEventListener('click', () => {
+      music.volume = 0.3;
+      music.play().catch(() => {});
+      revealButton.style.display = "none";
+      message.classList.remove("hidden");
+      revealLines('#personalMessage', 300);
+      setTimeout(() => {
+        mainContent.classList.remove("hidden");
+        revealLines('#mainContentRow .general-message', 250);
+      }, 2500);
+    });
+
+    // Trang 2 → Trang 3
+    toThirdPage.addEventListener('click', () => {
+      pageTwo.style.display = "none";
+      thirdPage.classList.remove("hidden");
+      revealLines('#thirdPageWrapper .general-message', 300);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Quay lại từ đầu
+    backToStart.addEventListener('click', () => {
+      thirdPage.style.display = "none";
+      pageTwo.style.display = "block";
+      revealButton.style.display = "inline-block";
+      message.classList.add("hidden");
+      mainContent.classList.add("hidden");
+      hideLines('#thirdPageWrapper .general-message');
+      hideLines('#personalMessage');
+      hideLines('#mainContentRow .general-message');
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>

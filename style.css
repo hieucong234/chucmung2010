@@ -1,0 +1,207 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(to bottom, #ffe6f2, #fff0f5);
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  max-width: 800px;
+  width: 90%;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  padding: 30px;
+  z-index: 10;
+  box-shadow: 0 0 20px rgba(255, 182, 193, 0.4);
+}
+
+/* Tiêu đề */
+.main-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 42px;
+  color: #d63384;
+  margin-bottom: 20px;
+  animation: fadeInDown 1.2s ease forwards;
+}
+
+/* Nút chính */
+.btn-main {
+  background: linear-gradient(45deg, #ff69b4, #ff85c1);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-size: 18px;
+  padding: 12px 25px;
+  cursor: pointer;
+  transition: all 0.3s;
+  animation: fadeIn 2s ease 0.8s forwards;
+  opacity: 0;
+}
+.btn-main:hover {
+  transform: scale(1.1);
+  background: linear-gradient(45deg, #ff85c1, #ff69b4);
+}
+
+/* Text chính */
+.personal-message {
+  margin-top: 20px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #c71585;
+  opacity: 0;
+  animation: slideUp 1.5s ease forwards;
+  animation-delay: 0.8s;
+}
+
+.main-content {
+  margin-top: 25px;
+  opacity: 0;
+  animation: fadeIn 2s ease forwards;
+  animation-delay: 1s;
+}
+
+.special-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  border: 4px solid #ffb6c1;
+  box-shadow: 0 8px 16px rgba(255, 182, 193, 0.5);
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 1.5s ease forwards;
+  animation-delay: 0.5s;
+}
+.special-image:hover {
+  transform: scale(1.01);
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6);
+}
+
+.general-message {
+  font-size: 17px;
+  color: #d63384;
+  opacity: 0;
+  line-height: 1.6;
+  animation: fadeInText 1.8s ease forwards;
+  white-space: normal;        /* Cho phép xuống dòng */
+  overflow-wrap: break-word;  /* Tự xuống dòng khi dài */
+  border: none;               /* Bỏ viền phải gây lỗi */
+  margin-top: 15px;
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  margin-top: 60px;
+  background: linear-gradient(180deg, #ffe6f2 0%, #fff 100%);
+  text-align: center;
+  padding: 25px 15px;
+  color: #d63384;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  border-top: 2px solid #ffcce0;
+  box-shadow: 0 -4px 15px rgba(255, 182, 193, 0.3);
+  position: relative;
+  z-index: 10;
+}
+
+footer p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+footer a {
+  color: #c2185b;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+footer a:hover {
+  color: #ff69b4;
+  text-shadow: 0 0 5px rgba(255, 182, 193, 0.8);
+}
+
+/* Hoa anh đào rơi */
+.falling-petals {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.petal {
+  position: absolute;
+  top: -10px;
+  font-size: 22px;
+  opacity: 0.9;
+  animation: fall 10s linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+.petal:nth-child(1) { left: 5%; animation-duration: 9s; }
+.petal:nth-child(2) { left: 15%; animation-duration: 12s; }
+.petal:nth-child(3) { left: 25%; animation-duration: 10s; }
+.petal:nth-child(4) { left: 40%; animation-duration: 8s; }
+.petal:nth-child(5) { left: 55%; animation-duration: 11s; }
+.petal:nth-child(6) { left: 65%; animation-duration: 9s; }
+.petal:nth-child(7) { left: 75%; animation-duration: 13s; }
+.petal:nth-child(8) { left: 85%; animation-duration: 10s; }
+.petal:nth-child(9) { left: 90%; animation-duration: 14s; }
+.petal:nth-child(10) { left: 95%; animation-duration: 9s; }
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes typing {
+  from { width: 0; opacity: 1; }
+  to { width: 100%; opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .main-title { font-size: 32px; }
+  .btn-main { font-size: 16px; padding: 10px 20px; }
+  .personal-message, .general-message { font-size: 16px; }
+}
+
+.hidden { display: none; }
+
+@keyframes fadeInText {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
